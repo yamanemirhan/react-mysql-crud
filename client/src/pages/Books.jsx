@@ -59,7 +59,9 @@ const Books = () => {
                 Delete
               </button>
               <button className="text-indigo-400">
-                <Link to={`/update-book/${book.id}`}>Update</Link>
+                <Link state={{ book: book }} to={`/update-book/${book.id}`}>
+                  Update
+                </Link>
               </button>
             </div>
           </div>

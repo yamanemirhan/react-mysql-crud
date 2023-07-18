@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -6,7 +6,7 @@ const UpdateBook = () => {
   const [book, setBook] = useState({
     title: "",
     desc: "",
-    price: null,
+    price: "",
     cover: "",
   });
 
@@ -14,6 +14,13 @@ const UpdateBook = () => {
   const location = useLocation();
 
   const bookdId = location.pathname.split("/")[2];
+
+  useEffect(() => {
+    if (location.state && location.state.book) {
+      const { title, desc, price, cover } = location.state.book;
+      setBook({ title, desc, price, cover });
+    }
+  }, [location.state]);
 
   const handleChange = (e) => {
     setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -36,6 +43,7 @@ const UpdateBook = () => {
         type="text"
         placeholder="title"
         name="title"
+        value={book.title}
         onChange={handleChange}
         className="input"
       />
@@ -43,6 +51,7 @@ const UpdateBook = () => {
         type="text"
         placeholder="desc"
         name="desc"
+        value={book.desc}
         onChange={handleChange}
         className="input"
       />
@@ -50,6 +59,7 @@ const UpdateBook = () => {
         type="number"
         placeholder="price"
         name="price"
+        value={book.price}
         onChange={handleChange}
         className="input"
       />
@@ -57,6 +67,7 @@ const UpdateBook = () => {
         type="text"
         placeholder="cover"
         name="cover"
+        value={book.cover}
         onChange={handleChange}
         className="input"
       />
