@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+  @apply no-underline;
+}
+
+button {
+  @apply min-w-[120px] border border-white py-1 px-2 rounded-sm bg-slate-700 hover:text-black hover:bg-white hover:rounded-lg transition-all duration-500;
+}
+
+.input {
+  @apply min-w-[400px] py-1 px-2 bg-gray-100 rounded-md focus:outline-none text-black text-lg;
+}
+
+.page {
+  @apply flex flex-col gap-3 items-center p-20 w-screen h-screen bg-slate-500 text-white text-lg;
+}
+
+.header {
+  @apply text-3xl p-5;
+}
